@@ -1,0 +1,19 @@
+<h1><%= @article.title %></h1>
+<p><%= @article.body %></p>
+<br>
+<br>
+<%= link_to "Edit", edit_article_path(@article)%>
+<br>
+<%= button_to "Destroy", article_path(@article), method: :delete, 
+          form: { data: { turbo_confirm: "⚠️ WARNING: This will permanently delete this article and all its comments. This action cannot be undone! Are you sure you want to proceed?" } },
+          class: "btn btn-danger" %>
+<br>
+<%= link_to "Home", articles_path %>
+<br>
+<br>
+<h2>Comments (<%= @article.comments.count %>) </h2>
+<%= render @article.comments %>
+<br>
+<br>
+<h2>Add a comment:</h2>
+<%= render 'comments/form', article: @article, comment: @comment %>

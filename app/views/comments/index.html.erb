@@ -1,0 +1,11 @@
+<h1>All Comments</h1>
+<% @comments.each do |comment| %>
+  <p>
+    <strong><%= comment.commenter %>:</strong>
+    <%= comment.body %>
+    <%= link_to 'Edit', edit_article_comment_path(@article, comment) %>
+    <%= link_to 'Destroy', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', article_path(@article) %>
